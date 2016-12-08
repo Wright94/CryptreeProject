@@ -109,6 +109,15 @@ class MyFilesystem(Operations):
         os.lseek(fh, offset, os.SEEK_SET)
         return os.write(fh, buf)
 
+    def flush(self, path, fh):
+        return os.fsync(fh)
+
+    def release(self, path, fh):
+        return os.close(fh)
+
+    def fsync(self, path, fdatasync, fh):
+        return self.flush(path, fh)
+
     # Main
     # ----
 def main(mountpoint, root):
