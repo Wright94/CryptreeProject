@@ -75,6 +75,21 @@ class MyFilesystem(Operations):
         return dict((key, getattr(st, key)) for key in ('st_atime', 'st_ctime',
                      'st_gid', 'st_mode', 'st_mtime', 'st_nlink', 'st_size', 'st_uid'))
 
+    def rename(self, old, new):
+        return os.rename(self._full_path(old), self._full_path(new))
+
+    def utimens(self, path, times=None):
+        return os.utime(self._full_path(path), times)
+
+    def unlink(self, path):
+        return os.unlink(self._full_path(path))
+
+    def symlink(self, name, target):
+        return os.symlink(name, self._full_path(target))
+
+    def link(self, target, name):
+        return os.link(self._full_path(target), self._full_path(name))
+
 
     # Main
     # ----
