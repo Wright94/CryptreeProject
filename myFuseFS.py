@@ -90,6 +90,24 @@ class MyFilesystem(Operations):
     def link(self, target, name):
         return os.link(self._full_path(target), self._full_path(name))
 
+    # Below, the File specific methods are defined
+    # --------------------------------------------
+
+    def open(self, path, flags):
+        full_path = self._full_path(path)
+        return os.open(full_path, flags)
+
+    def create(self, path, mode, fi=None):
+        full_path = self._full_path(path)
+        return os.open(full_path, os.O_WRONLY | os.O_CREAT, mode)
+
+    def read(self, path, length, offset, fh):
+        os.lseek(fh, offset, os.SEEK_SET)
+        return os.read(fh, length)
+
+    def write(self, path, buf, offset, fh):
+        os.lseek(fh, offset, os.SEEK_SET)
+        return os.write(fh, buf)
 
     # Main
     # ----
