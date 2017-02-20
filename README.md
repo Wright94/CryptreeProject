@@ -24,6 +24,12 @@ $ python myFuseFS.py /Users/Harry/Documents /Users/Harry/fsMount
 fsMount will now mirror /Documents directory and allow you to execute typical file and filesystem
 commands.
 
+Unmounting
+-----------------------------------------
+umount -f /mnt/pnt
+-----------------------------------------
+
+
 ------------Note-------------
 
 At the top of myFuseFS.py is the line:
@@ -34,3 +40,4 @@ This is because on my own Mac, the sys.path does not look in the right place and
 not pick up the fusepy library. I have tried to correct this but something isnt quite right.
 
 Please remove this line before executing the script.
+
