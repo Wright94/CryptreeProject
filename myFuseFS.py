@@ -37,6 +37,7 @@ class MyFilesystem(Operations):
             dirents.extend(os.listdir(full_path))
         for r in dirents:
             yield r
+        # print("Hello, I list Directories")
 
     def readlink(self, path):
         pathname = os.readlink(self._full_path(path))
