@@ -44,6 +44,7 @@ def mainTreeBuild(root):
     files = [[0, os.path.basename(rootDir)]]
     nodeId = 1
     Test2(rootDir, nodeId, files)
+    # files[0][2:2] = ["Please Work!"]
     print(files)
 
 if __name__ == '__main__':
