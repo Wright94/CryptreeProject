@@ -24,20 +24,27 @@
 
 import os
 
+import sys
 
-def Test2(rootDir, nodeId):
+
+def Test2(rootDir, nodeId, files):
     for lists in os.listdir(rootDir):
         path = os.path.join(rootDir, lists)
         files.append([nodeId, lists])
         print(path)
         nodeId += 1
         if os.path.isdir(path):
-            Test2(path, nodeId)
+            Test2(path, nodeId, files)
             nodeId = len(files)
 
 
-rootDir = "ThisDirectory"
-files = []
-nodeId = 0
-Test2(rootDir, nodeId)
-print(files)
+def mainTreeBuild(root):
+
+    rootDir = root
+    files = []
+    nodeId = 0
+    Test2(rootDir, nodeId, files)
+    print(files)
+
+if __name__ == '__main__':
+    mainTreeBuild(sys.argv[1])

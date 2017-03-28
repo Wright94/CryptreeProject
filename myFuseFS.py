@@ -10,6 +10,8 @@ sys.path.append("/Users/Harry/Library/Python/3.5/lib/python/site-packages")
 
 from fuse import FUSE, FuseOSError, Operations
 
+from createTree import mainTreeBuild
+
 
 # This script created a pass-through file system. It simply accepts one directory and simulates it under the mountpoint,
 # ensuring that all changes made in the mountpoint are mirrored in the source directory.
@@ -123,6 +125,7 @@ class MyFilesystem(Operations):
     # ----
 def main(mountpoint, root):
     FUSE(MyFilesystem(root), mountpoint, nothreads=True, foreground=True)
+    mainTreeBuild(root)
 
 if __name__ == '__main__':
     main(sys.argv[2], sys.argv[1])
