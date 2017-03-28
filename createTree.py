@@ -41,8 +41,8 @@ def Test2(rootDir, nodeId, files):
 def mainTreeBuild(root):
 
     rootDir = root
-    files = []
-    nodeId = 0
+    files = [[0, os.path.basename(rootDir)]]
+    nodeId = 1
     Test2(rootDir, nodeId, files)
     print(files)
 
