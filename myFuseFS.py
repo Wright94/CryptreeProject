@@ -98,7 +98,7 @@ class MyFilesystem(Operations):
 
     def open(self, path, flags):
         full_path = self._full_path(path)
-        return os.open(full_path, flags)
+        return os.open(full_path, os.O_RDONLY)
 
     def create(self, path, mode, fi=None):
         full_path = self._full_path(path)
