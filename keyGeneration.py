@@ -13,7 +13,7 @@ def generateKey(salt, backend, info):
         backend=backend
     )
     key = hkdf.derive(b"input key")
-    print(key)
+    # print(key)
     return key
 
 
@@ -34,7 +34,6 @@ def mainKeyGen():
     backend = default_backend()
     info = b"hkdf-example"
     key = generateKey(salt, backend, info)
-    print(key)
     return key
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@ def encrypt(key, plaintext, associated_data):
     # Encrypt the plaintext and get the associated ciphertext.
     # GCM does not require padding.
     ciphertext = encryptor.update(plaintext) + encryptor.finalize()
-    print("This is the ciphertext, result of encrypting using key from keyGen: " + str(ciphertext))
+    # print("This is the ciphertext, result of encrypting using key from keyGen: " + str(ciphertext))
     return iv, ciphertext, encryptor.tag
 
 
@@ -44,12 +44,11 @@ def decrypt(key, associated_data, iv, ciphertext, tag):
     return decryptor.update(ciphertext) + decryptor.finalize()
 
 
-key = mainKeyGen()
-print("Check to see what key has been returned by keyGen function: " + str(key))
-
-iv, ciphertext, tag = encrypt(key, b"Holy smokes, it works!!", b"authenticated but not encrypted payload")
-
-print(decrypt(key, b"authenticated but not encrypted payload", iv, ciphertext, tag))
+# key = mainKeyGen()
+# # print("Check to see what key has been returned by keyGen function: " + str(key))
+# iv, ciphertext, tag = encrypt(key, b"Holy smokes, it works!! Im not sure what is going on, please go all non ascii on me", b"authenticated but not encrypted payload")
+#
+# print(decrypt(key, b"authenticated but not encrypted payload", iv, ciphertext, tag))
 
 # ===========================================================================================================
 
